@@ -1,0 +1,41 @@
+                                       2. Controller Class:
+/*
+* To change this license header, choose License Headers in Project 
+Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
+//ControllerClass:
+package scdlab11;
+public class TaskController {
+ private Task[] tasks;
+ private int taskCount;
+ public TaskController(int size) {
+ tasks = new Task[size];
+ taskCount = 0;
+ }
+ public void addTask(String title, String description) {
+ if (taskCount < tasks.length) {
+ tasks[taskCount] = new Task(taskCount + 1, title, 
+description);
+ taskCount++;
+ } else {
+ System.out.println("Task list is full.");
+ }
+ }
+ public Task[] getTasks() {
+ return tasks;
+ }
+ public int getTaskCount() {
+ return taskCount;
+ }
+ public boolean markTaskCompleted(int taskId) {
+ for (int i = 0; i < taskCount; i++) {
+ if (tasks[i].getId() == taskId) {
+ tasks[i].markCompleted();
+ return true;
+ }
+ }
+ return false;
+ }
+}
